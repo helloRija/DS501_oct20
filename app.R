@@ -1,7 +1,11 @@
-#### Use 'tables' in tabs to help organize the data and add pictures. 
-###ThisIsIn_kMeansCluster_RijaShinyOct15###
-
+library(shiny)
 library(rsconnect)
+library(shinythemes)
+library(ggvis)
+library(cluster)
+library(cluster.datasets)  
+
+OpenDef_Data_naRm <- read.csv(text = getURL("https://github.com/helloRija/RijaDSF01/blob/main/OpenDef_Data_naRm.csv")) 
 
 # ui.R
 library(shiny)
