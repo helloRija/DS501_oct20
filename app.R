@@ -90,52 +90,94 @@ Summary"),
                            h2("Data collected"),
                            p("In Week 7 of this class there was a lab on k-means clustering. I looked at the data and felt
                     it would be best to replicate this analysis. I found some really interesting data from Worldbank.org"
-                           ), 
-                        
+                           ), p("https://github.com/helloRija/DS501_oct20"),
+                           
                            
                            h2("Findings"),
                            p("This analysis will shows all 4 of the clusters in one image in one tab. And the subsequent tab,
                            allows the user to filter each of the clusters. It's obvious that low death counts seem to be consistent with 
                            not practicing open defecation. There are outliers and it would be helpful to run studies of my 
                            own with my specific requirments for data acceptance. Nevertheless it is interesting to look at this information 
-                           plotted.")
+                           plotted."),
+                           
+                           br(),
+                           p("Source: https://databank.worldbank.org/source/health-nutrition-and-population-statistics#"),
+                           p("Dingari, Narahar Chari Phd., 2024. Course Material. Worcester Polytechnic Institute.
+                             DS501 - Introduction to Data Science. Week 07")
                            
                            
                          ) ##Close fluid page
                 ),###closes name of panel
                 
-               
-    # ###MoreDataTab###
-    # tabPanel("More",
-    #          fluidPage(
-    #            h1("New Inf"),
-    #            p("text"),
-    #            
-    #            h4("Observations"),
-    #            tableOutput("plot1"),
-    #            
-    #            h4("Observations"),
-    #            tableOutput("tableClus1b"),
-    #            
-    #            h2(""),
-    #            p("")
-    #      
-    #            
-    #            
-    #          ) ##Close fluid page
-    # ),###closes name of panel
+                
+                # ###MoreDataTab###
+                # tabPanel("More",
+                #          fluidPage(
+                #            h1("New Inf"),
+                #            p("text"),
+                #            
+                #            h4("Observations"),
+                #            tableOutput("plot1"),
+                #            
+                #            h4("Observations"),
+                #            tableOutput("tableClus1b")
+                #            
+                #          ) ##Close fluid page
+                # ),###closes name of panel
                 
                 
                 
-                 ###SecondTab
+                
+                ###AboutClustering###
+                tabPanel("Clustering",
+                         fluidPage(
+                           h1("A bit about Clustering"),
+                           p("Clustering is an unsupervised algorithm. We use our data analysis to 
+                             recognize and group our data into a pattern. It's considered simple and basic. 
+                             Perfect for my level of data understanding."),
+                           
+                           h4("What do you need"),
+                           p("Clustering involves specifing the number of clusters ahead of time. Termed
+                             'k'. Then you need your data of course. A key component of clustering will
+                             be your centroids. These are chosen randomly by your data analysis tool. Finally
+                             in any real study, you will try iterations to understand the data"),
+                           
+                           h4("How does the algorithm work"),
+                           p("First your data tool select K centroids from your dataset.Then it looks at each individual
+                           data point and assigns it to the closes centroid. Then it re-calculates a new centroid. 
+                           How? it takes the mean of all the data points in that cluster. That's alot of math. 
+                           Then it just keeps assigning and re-calculating until something called convergence."),
+                           
+                           h4("What's Convergence"),
+                           p("This is when your algorithm stops iterating because the means-centroids aren't
+                           changing anymore. So if your algorithm keeps iterating and the centroids stop changing, 
+                           Convergence has been achieved. So the algorithm stops. Easy. It calculates the 
+                           within-cluster sum of squares (WCSS) between iterations to ascertain convergence. 
+                           
+                           There are two types of convergence in K-Means:
+                           Local: The algorithm converges to a local minimum, it finds a cluster and centroid values that minimize  WCSS, but may not be  global optimum.
+
+                           Global : The algorithm converges to the global optimum, which is often hard to get to. Local convergence is often enough."),
+                           
+                           br(),
+                           p("Source: https://www.youtube.com/watch?v=jZs5rX8Kl3o"),
+                           p("Source: Brave: Clustering. Oct 2024"),
+                           p("Dingari, Narahar Chari Phd., 2024. Course Material. Worcester Polytechnic Institute.
+                             DS501 - Introduction to Data Science. Week 07")
+                           
+                         ) ##Close fluid page
+                ),###closes name of panel
+                
+                
+                ###SecondTab
                 tabPanel("Overview", 
                          
                          fluidPage(
                            sidebarLayout(
                              sidebarPanel(
                                ##selectInput("cluster2", label = "Cluster:", 
-                                         ##  choices = birth.death$Cluster,
-                                         ##  selected = "All")
+                               ##  choices = birth.death$Cluster,
+                               ##  selected = "All")
                                # Include clarifying text ----
                                helpText("This Plot shows all 4 of the clusters in one image. Its very 
                                obvious here to see that low death counts seem to be consistent with 
@@ -239,7 +281,7 @@ server = shinyServer(function(input, output) {
   # output$plot1 <- renderTable({
   #  plot_data1
   # })
-
+  
 })
 
 ####################################
